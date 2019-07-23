@@ -1,0 +1,42 @@
+
+env:
+  host:
+    local: localhost
+    dev: dev.avocadostudio.xyz
+  db:
+    local:
+      port: 3306
+      schema: GUARD
+      username: root
+      password: root
+    dev:
+      port: 3306
+      schema: GUARD
+      username: root
+      password: root
+
+---
+
+spring:
+   profiles: default
+
+migration:
+   url: ${env.host.dev}
+   port: ${env.db.local.port}
+   schema: ${env.db.local.schema}
+   username: ${env.db.local.username}
+   password: ${env.db.local.password}
+   location: classpath:migration
+
+---
+
+spring:
+   profiles: dev
+
+migration:
+   url: ${env.host.dev}
+   port: ${env.db.dev.port}
+   schema: ${env.db.dev.schema}
+   username: ${env.db.dev.username}
+   password: ${env.db.dev.password}
+   location: classpath:migration
