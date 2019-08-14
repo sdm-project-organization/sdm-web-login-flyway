@@ -1,15 +1,14 @@
 
 env:
-  host:
-    local: localhost
-    dev: dev.avocadostudio.xyz
   db:
     local:
+      host: localhost
       port: 3306
       schema: GUARD
       username: root
-      password: root
+      password: 1234
     dev:
+      host: dev.avocadostudio.xyz
       port: 3306
       schema: GUARD
       username: root
@@ -21,7 +20,7 @@ spring:
    profiles: default
 
 migration:
-   url: ${env.host.dev}
+   url: ${env.db.local.host}
    port: ${env.db.local.port}
    schema: ${env.db.local.schema}
    username: ${env.db.local.username}
@@ -34,7 +33,7 @@ spring:
    profiles: dev
 
 migration:
-   url: ${env.host.dev}
+   url: ${env.db.dev.host}
    port: ${env.db.dev.port}
    schema: ${env.db.dev.schema}
    username: ${env.db.dev.username}

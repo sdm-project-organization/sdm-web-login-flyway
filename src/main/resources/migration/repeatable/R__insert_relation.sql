@@ -1,0 +1,41 @@
+--
+---- INSERT G_R_AUTH_RESOURCE_TB (Without PK)
+--INSERT INTO GUARD.G_R_AUTH_RESOURCE_TB
+--(auth_sq, resource_sq, disp_nm, disp_ord, created_dt, updated_dt, writer, editor, active_fl, enable_fl, meta, `desc`)
+--VALUES
+---- admin(1) & GET
+--( 1, 1, "auth_res_1", 1, NOW(), NOW(), "sdm", "sdm", 1, 1, "meta1", "desc1"),
+---- admin(1) & POST
+--( 1, 2, "auth_res_2", 2, NOW(), NOW(), "sdm", "sdm", 1, 1, "meta2", "desc2"),
+---- admin(1) & PUT
+--( 1, 3, "auth_res_3", 3, NOW(), NOW(), "sdm", "sdm", 1, 1, "meta2", "desc2"),
+---- admin(1) & PUT
+--( 1, 4, "auth_res_3", 4, NOW(), NOW(), "sdm", "sdm", 1, 1, "meta2", "desc2"),
+---- writer(2) & PUT
+--( 2, 3, "auth_res_3", 5, NOW(), NOW(), "sdm", "sdm", 1, 1, "meta2", "desc2"),
+---- reader(3) & GET
+--( 3, 1, "auth_res_3", 6, NOW(), NOW(), "sdm", "sdm", 1, 1, "meta2", "desc2"),
+---- reader(3) & POST
+--( 3, 2, "auth_res_3", 7, NOW(), NOW(), "sdm", "sdm", 1, 1, "meta2", "desc2");
+--
+---- INSERT G_R_ROLE_AUTH_TB (Without PK)
+--INSERT INTO GUARD.G_R_ROLE_AUTH_TB
+--(role_sq, auth_sq, disp_nm, disp_ord, created_dt, updated_dt, writer, editor, active_fl, enable_fl, meta, `desc`)
+--VALUES
+---- developer(1) & admin(1)
+--( 1, 1, "role_auth_1", 1, NOW(), NOW(), "sdm", "sdm", 1, 1, "meta1", "desc1"),
+---- pm(2) & writer(2)
+--( 2, 2, "role_auth_2", 2, NOW(), NOW(), "sdm", "sdm", 1, 1, "meta2", "desc2"),
+---- opt(3) & reader(3)
+--( 3, 3, "role_auth_3", 3, NOW(), NOW(), "sdm", "sdm", 1, 1, "meta3", "desc3");
+--
+---- INSERT G_R_USER_ROLE_TB (Without PK)
+--INSERT INTO GUARD.G_R_USER_ROLE_TB
+--(user_sq, role_sq, disp_nm, disp_ord, created_dt, updated_dt, writer, editor, active_fl, enable_fl, meta, `desc`)
+--VALUES
+---- usernameA & developer(1)
+--( 1, 1, "user_role_1", 1, NOW(), NOW(), "sdm", "sdm", 1, 1, "meta1", "desc1"),
+---- usernameA & writer(2)
+--( 1, 2, "user_role_2", 2, NOW(), NOW(), "sdm", "sdm", 1, 1, "meta2", "desc2"),
+---- usernameA & reader(3)
+--( 1, 3, "user_role_3", 3, NOW(), NOW(), "sdm", "sdm", 1, 1, "meta3", "desc3");

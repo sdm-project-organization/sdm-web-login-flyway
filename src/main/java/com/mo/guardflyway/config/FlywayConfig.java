@@ -28,6 +28,8 @@ public class FlywayConfig {
     @Value("${migration.location}")
     public String LOCATION;
 
+    public final String OPTION = "verifyServerCertificate=false&useSSL=true&serverTimezone=UTC";
+
     @PostConstruct
     public void init() {
         /*System.out.println("FlywayConfig init() call");*/
@@ -37,7 +39,9 @@ public class FlywayConfig {
     @Bean
     public Flyway getFlyway() {
         Flyway flyway = new Flyway();
-        flyway.setDataSource("jdbc:mysql://" + HOST + ":" + PORT + "/" + SCHEMA, ID, PW);
+        flyway.setDataSource(String.format("jdbc:mysql://%s:%s/%s?%s", HOST, PORT, SCHEMA, OPTION),
+                ID,
+                PW);
         flyway.setLocations(LOCATION);
         flyway.clean();
         flyway.migrate();
